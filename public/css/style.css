@@ -872,7 +872,7 @@ fieldset {
 
   font-size: 0;
 
-  background-image: url("../img/sprite-feature.svg");
+  background-image: url("../img/sprite-feature-active.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: 25px 345px;
@@ -881,25 +881,48 @@ fieldset {
 .popup__feature--wifi {
   background-position: 2px 5px;
 }
+.popup__feature--wifi__disable {
+  background-position: 2px -173px;
+}
 
 .popup__feature--dishwasher {
   background-position: 2px -25px;
+}
+
+.popup__feature--dishwasher__disable {
+  background-position: 2px -195px;
 }
 
 .popup__feature--parking {
   background-position: 3px -55px;
 }
 
+.popup__feature--parking__disable {
+  background-position: 2px -225px;
+}
+
 .popup__feature--washer {
   background-position: 2px -85px;
+}
+
+.popup__feature--washer__disable {
+  background-position: 2px -255px;
 }
 
 .popup__feature--elevator {
   background-position: 2px -143px;
 }
 
+.popup__feature--elevator__disable {
+  background-position: 2px -313px;
+}
+
 .popup__feature--conditioner {
   background-position: 3px -114px;
+}
+
+.popup__feature--conditioner__disable {
+  background-position: 2px -284px;
 }
 
 .popup__photos {

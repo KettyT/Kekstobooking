@@ -87,25 +87,32 @@ const photos = [
     "http://o0.github.io/assets/images/tokyo/hotel3.jpg"
 ];
 
+const geoInfo = {
+    lonMin: 139.70000,
+    lonMax: 139.80000,
+    latMin: 35.65000,
+    latMax: 35.70000
+};
+
 const generateMapobject = () => {
 
-    const x = getRandomNumber(35.65000, 35.70000, 7);
-    const y = getRandomNumber(139.70000, 139.80000, 7);
+    const x = getRandomNumber(geoInfo.lonMin, geoInfo.lonMax, 7);
+    const y = getRandomNumber(geoInfo.latMin, geoInfo.latMax, 7);
 
     return {
         author: {
             avatar: avatarOptions[getRandomNumber(0, 8, 0)] ,
         },
         offer: {
-            title: title[getRandomNumber(0, 5), 0],
+            title: title[getRandomNumber(0, 5, 0)],
             address: "[" + x + ", " + y + "]",
             price: getRandomNumber(1000, 500000, 0),
-            type: type[getRandomNumber(0, 4, ), 0],
+            type: type[getRandomNumber(0, 4, 0)],
             rooms: getRandomNumber(1, 4, 0),
             guests: getRandomNumber(1, 10, 0),
-            checkin: checkin[getRandomNumber(0, 3), 0],
-            checkout: checkout[getRandomNumber(0, 3), 0],
-            features: features [getRandomNumber(1, 5, 0)],
+            checkin: checkin[getRandomNumber(0, 3, 0)],
+            checkout: checkout[getRandomNumber(0, 3, 0)],
+            features: [features [getRandomNumber(1, 5, 0)]],
             description: description[getRandomInt(0, description.length)],
             photos: photos[getRandomInt(0, photos.length)]
         },
@@ -116,16 +123,41 @@ const generateMapobject = () => {
     }
 }
 
-const  author = function () {
+const  generateDataMapobjects = function () {
     const result = [];
 
-    const mapObject = generateMapobject();
+    for (let i = 0; i < 20; i++) {
+        const mapObject = generateMapobject();
 
-    result.push(mapObject);
-
+        result.push(mapObject);
+    }
     return result;
 }
 
-const dataMapobject = generateMapobject();
+const mapPositionInfo = {
+    dataMapObjects: generateDataMapobjects(),
+    mapPositionInfo: {
+        centerLon: (geoInfo.lonMax + geoInfo.lonMin) / 2,
+        centerLat: (geoInfo.latMax + geoInfo.latMin) / 2,
+    }
+};
+/*let mapPositionInfo;
 
-export default dataMapobject;
+fetch('https://23.javascript.htmlacademy.pro/keksobooking/data')
+.then ((resp)=>{
+    return resp.json();
+}).then((response)=>{
+    mapPositionInfo = {
+        dataMapObjects: response,
+        mapPositionInfo: {
+            centerLon: (geoInfo.lonMax + geoInfo.lonMin) / 2,
+            centerLat: (geoInfo.latMax + geoInfo.latMin) / 2,
+        }
+
+
+    };
+
+    window.mapPositionInfo = mapPositionInfo;
+});*/
+window.mapPositionInfo = mapPositionInfo;
+export default mapPositionInfo;

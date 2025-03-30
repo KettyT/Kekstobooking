@@ -1,5 +1,5 @@
 import * as React from 'react';
-import dataMapobject from "../utils/data";
+import mapPositionInfo from "../utils/data";
 
 
 class MapCmp extends React.Component {
@@ -22,7 +22,7 @@ class MapCmp extends React.Component {
 
     render() {
 
-        console.log(dataMapobject);
+        // console.log(mapPositionInfo.dataMapobjects);
         console.log(this.wasRender);
         this.wasRender = true;
 

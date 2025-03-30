@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--Карточка объявления-->
+<script type="text/template" id="card">
+    <article class="popup">
+        <img src="/img/avatars/<%=data.author.avatar%>" class="popup__avatar" width="70" height="70" alt="Аватар пользователя"/>
+        <h3 class="popup__title"><%=data.offer.title%></h3>
+        <p class="popup__text popup__text--address"><%=data.offer.address%></p>
+        <p class="popup__text popup__text--price"><%=data.offer.price%> руб</p>
+        <h4 class="popup__type">Квартира</h4>
+        <p class="popup__text popup__text--capacity"><%=data.offer.rooms%> для <%=data.offer.guests%> гостей</p>
+        <p class="popup__text popup__text--time">Заезд после <%=data.offer.checkin%>, выезд до <%=data.offer.checkout%></p>
+        <ul class="popup__features">
+            <li class="popup__feature <%=(data.featureObj.wifi) ? "popup__feature--wifi" : "popup__feature--wifi__disable"%>"></li>
+            <li class="popup__feature <%=(data.featureObj.dishwasher) ? "popup__feature--dishwasher" : "popup__feature--dishwasher__disable"%>"></li>
+            <li class="popup__feature <%=(data.featureObj.parking) ? "popup__feature--parking" : "popup__feature--parking__disable"%>"></li>
+            <li class="popup__feature <%=(data.featureObj.washer) ? "popup__feature--washer" : "popup__feature--washer__disable"%>"></li>
+            <li class="popup__feature <%=(data.featureObj.elevator) ? "popup__feature--elevator" : "popup__feature--elevator__disable"%>"></li>
+            <li class="popup__feature <%=(data.featureObj.conditioner) ? "popup__feature--conditioner" : "popup__feature--conditioner__disable"%>"></li>
+        </ul>
+        <p class="popup__description"><%=data.offer.description%></p>
+        <div class="popup__photos">
+            <img src="<%=data.offer.photos%>" class="popup__photo" width="45" height="40" alt="Фотография жилья"/>
+        </div>
+    </article>
+</script>
+
+<!--Сообщение об успешном создании объявления-->
+<template id="success">
+    <div class="success">
+        <p class="success__message">Ваше объявление<br>успешно размещено!</p>
+    </div>
+</template>
+
+<!--Сообщение об ошибке создания объявления-->
+<template id="error">
+    <div class="error">
+        <p class="error__message">Ошибка размещения объявления</p>
+        <button type="button" class="error__button">Попробовать снова</button>
+    </div>
+</template>
+</body>
+</html>
