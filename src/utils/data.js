@@ -117,8 +117,8 @@ const generateMapobject = () => {
             photos: photos[getRandomInt(0, photos.length)]
         },
         location: {
-            x: x,
-            y: y
+            lng: x,
+            lat: y
         }
     }
 }
@@ -134,20 +134,20 @@ const  generateDataMapobjects = function () {
     return result;
 }
 
-const mapPositionInfo = {
+/*const mapPositionInfo = {
     dataMapObjects: generateDataMapobjects(),
     mapPositionInfo: {
         centerLon: (geoInfo.lonMax + geoInfo.lonMin) / 2,
         centerLat: (geoInfo.latMax + geoInfo.latMin) / 2,
     }
-};
-/*let mapPositionInfo;
+};*/
+// let mapPositionInfo;
 
-fetch('https://23.javascript.htmlacademy.pro/keksobooking/data')
+const dataMapServer = fetch('https://23.javascript.htmlacademy.pro/keksobooking/data')
 .then ((resp)=>{
     return resp.json();
 }).then((response)=>{
-    mapPositionInfo = {
+    const mapPositionInfo = {
         dataMapObjects: response,
         mapPositionInfo: {
             centerLon: (geoInfo.lonMax + geoInfo.lonMin) / 2,
@@ -157,7 +157,23 @@ fetch('https://23.javascript.htmlacademy.pro/keksobooking/data')
 
     };
 
-    window.mapPositionInfo = mapPositionInfo;
-});*/
-window.mapPositionInfo = mapPositionInfo;
-export default mapPositionInfo;
+    // window.mapPositionInfo = mapPositionInfo;
+
+    console.log("From server");
+    console.log(mapPositionInfo);
+
+    console.log("Generated");
+    console.log({
+        dataMapObjects: generateDataMapobjects(),
+        mapPositionInfo: {
+            centerLon: (geoInfo.lonMax + geoInfo.lonMin) / 2,
+            centerLat: (geoInfo.latMax + geoInfo.latMin) / 2,
+        }
+    });
+
+    return mapPositionInfo;
+});
+window.dataMapServer = dataMapServer;
+
+// window.mapPositionInfo = mapPositionInfo;
+// export default mapPositionInfo;
